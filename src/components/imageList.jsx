@@ -19,8 +19,8 @@ function srcset(image, width, height, rows = 1, cols = 1) {
 export default function CustomImageList() {
   return (
       <Grid align="center">
-          <SimpleReactLightbox>
-                <SRLWrapper>
+          {/* <SimpleReactLightbox>
+                <SRLWrapper> */}
                     <ImageList
                         sx={{
                             width: 500,
@@ -74,8 +74,8 @@ export default function CustomImageList() {
                             );
                         })}
                     </ImageList>
-                </SRLWrapper>
-            </SimpleReactLightbox>
+                {/* </SRLWrapper>
+            </SimpleReactLightbox> */}
       </Grid>
   );
 }
