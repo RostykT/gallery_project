@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import LoginPage from './pages/login/loginPage';
+import HomePage from './pages/home/homePage';
+import { Switch, Route } from 'react-router-dom';
+import PrivateRoute from './components/privateRoute';
+import { useState } from 'react';
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated ] = useState(false)
+  console.log(isAuthenticated)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     <Switch>
+       <Route exact path='/' render={() => <LoginPage setIsAuthenticated={setIsAuthenticated}/>}/>
+       <PrivateRoute exact path='/home' component={HomePage} isAuthenticated={isAuthenticated}/>
+     </Switch>
     </div>
   );
 }
