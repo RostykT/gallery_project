@@ -1,70 +1,44 @@
-import './filmList.css'
-import React from 'react'
+
+import './filmList.css';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+
+
 
 const FilmList = () => {
+const [ data, setData ] = useState([])
+useEffect(() => {
+    const fetchData = async () => {
+        const result = await axios({
+            method: 'get',
+            url: 'http://127.0.0.1:8001/films',
+        });
+        setData(result.data)
+    };
+    fetchData();
+}, [])
+console.log('data', data);
   return (
     <div className='container'>
         <h1>Recommend film for you.</h1>
         <div className='content'>
-        <div className="wrap">
-            <img 
-                src='/images/1.jpg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
+           { data && data.map((film, index) => (
+            <div className="wrap" key={index}>
+            <Link to={`/films/${index}`}>
+                <img 
+                    src={film.Poster}
+                    alt={`${film.Title} ${film.Year}`}
+                />
+            </Link>
+            
         </div>
-        <div className="wrap">
-            <img 
-                src='/images/2.jpg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
-        </div>
-        <div className="wrap">
-            <img 
-                src='/images/2.jpg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
-        </div>
-        <div className="wrap">
-            <img 
-                src='/images/1.jpg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
-        </div>
-        <div className="wrap">
-            <img 
-                src='/images/4.jpeg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
-        </div>
-        <div className="wrap">
-            <img 
-                src='/images/1.jpg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
-        </div>
-        <div className="wrap">
-            <img 
-                src='/images/4.jpeg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
-        </div>
-        <div className="wrap">
-            <img 
-                src='/images/1.jpg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
-        </div>
-        <div className="wrap">
-            <img 
-                src='/images/2.jpg' 
-                alt='Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, voluptates beatae! Sed aliquid ipsum omnis adipisci dolor reiciendis laboriosam blanditiis quidem! Sapiente debitis odio at, tempore non nam fugit expedita!'
-            />
-        </div>
+           ))}
         
-       
     </div>
     </div>
   )
 }
 
-export default FilmList
+export default FilmList;

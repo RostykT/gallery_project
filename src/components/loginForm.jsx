@@ -21,7 +21,7 @@ const LoginForm=({userAdmin, authUser})=>{
         e.preventDefault()
         if (user.email === userAdmin.email && user.password === userAdmin.password) {
             authUser(true)
-            history.push('/home')
+            history.push('/films')
         } else {
             setError(true)
         }
