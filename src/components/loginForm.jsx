@@ -28,54 +28,56 @@ const LoginForm=({userAdmin, authUser})=>{
     }
     return(
         <Grid>
-            <Paper elevation={10} style={paperStyle}>
-                <Grid align='center'>
-                    <h2>Sign In</h2>
-                </Grid>
-                <TextField 
-                    label='Email'
-                    placeholder='Enter email'
-                    type='email'
-                    fullWidth
-                    required
-                    margin="normal"
-                    error={error}
-                    helperText={ error && "Incorrect password or email."}
-                    onChange={e => setUser({...user, email: e.target.value})}
-                />
-                <TextField
-                label='Password'
-                    placeholder='Enter password'
-                    type='password'
-                    fullWidth
-                    required
-                    margin="normal"
-                    error={error}
-                    helperText={ error && "Incorrect password or email."}
-                    onChange={e => setUser({...user, password: e.target.value})}
-                />
-                
-                <Button 
-                    type='submit' 
-                    color='primary' 
-                    variant="contained" 
-                    style={btnstyle} 
-                    fullWidth
-                    onClick={submitHandler}
-                >
-                    Sign in
-                </Button>
-                <Typography >
-                     <Link href="#" >
-                        Forgot password ?
-                </Link>
-                </Typography>
-                <Typography > Do you have an account ?
-                     <Link href="#" >
-                        Sign Up 
-                </Link>
-                </Typography>
-            </Paper>
+            <form>
+                <Paper elevation={10} style={paperStyle}>
+                    <Grid align='center'>
+                        <h2>Sign In</h2>
+                    </Grid>
+                    <TextField 
+                        label='Email'
+                        placeholder='Enter email'
+                        type='email'
+                        fullWidth
+                        required
+                        margin="normal"
+                        error={error}
+                        helperText={ error && "Incorrect password or email."}
+                        onChange={e => setUser({...user, email: e.target.value})}
+                    />
+                    <TextField
+                    label='Password'
+                        placeholder='Enter password'
+                        type='password'
+                        fullWidth
+                        required
+                        margin="normal"
+                        error={error}
+                        helperText={ error && "Incorrect password or email."}
+                        onChange={e => setUser({...user, password: e.target.value})}
+                    />
+                    
+                    <Button 
+                        type='submit' 
+                        color='primary' 
+                        variant="contained" 
+                        style={btnstyle} 
+                        fullWidth
+                        onClick={submitHandler}
+                    >
+                        Sign in
+                    </Button>
+                    <Typography >
+                        <Link href="#" >
+                            Forgot password ?
+                    </Link>
+                    </Typography>
+                    <Typography > Do you have an account ?
+                        <Link href="#" >
+                            Sign Up 
+                    </Link>
+                    </Typography>
+                </Paper>
+            </form>
         </Grid>
     )
 }
