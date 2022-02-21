@@ -6,6 +6,7 @@ import {
   Grid,
   Paper,
   } from '@mui/material';
+import { grid } from '@mui/system';
 
 const FilmDetail = () => {
     const {filmId} = useParams();
@@ -61,12 +62,22 @@ console.log(film)
             </Grid>
           </Grid>
        </Grid>
+
+
+
+
+       <Grid container mt={10}>
+         <Grid align="center">
+          <h1>Movie Description</h1>
+         </Grid>
           <Grid item>
               {film.Description}
-            </Grid>
-          <Grid  item align="center">
-              <video src="http://localhost:8001/video" width="900" controls />
           </Grid>
+          <Grid  item align="center" mt={5}>
+              <video src="http://localhost:8001/video" width="1000" controls />
+          </Grid>
+       </Grid>
+       
      </Paper>
    </Grid>
   )
