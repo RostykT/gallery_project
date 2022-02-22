@@ -13,7 +13,7 @@ useEffect(() => {
     const fetchData = async () => {
         const result = await axios({
             method: 'get',
-            url: 'http://127.0.0.1:8001/films',
+            url: 'http://192.168.2.110:8001/films',
         });
         setData(result.data)
     };

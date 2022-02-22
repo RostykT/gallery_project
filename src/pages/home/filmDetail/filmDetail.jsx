@@ -6,7 +6,6 @@ import {
   Grid,
   Paper,
   } from '@mui/material';
-import { grid } from '@mui/system';
 
 const FilmDetail = () => {
     const {filmId} = useParams();
@@ -18,7 +17,7 @@ const FilmDetail = () => {
         const fetchData = async () => {
             const result = await axios({
                 method: 'get',
-                url: `http://127.0.0.1:8001/films/${filmId}`,
+                url: `http://192.168.2.110:8001//films/${filmId}`,
             });
             setFilm(result.data);
         };
@@ -74,7 +73,7 @@ console.log(film)
               {film.Description}
           </Grid>
           <Grid  item align="center" mt={5}>
-              <video src="http://localhost:8001/video" width="1000" controls />
+              <video src="http://192.168.2.110:8001/video" width="1000" controls />
           </Grid>
        </Grid>
        
